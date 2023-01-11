@@ -1,0 +1,32 @@
+.nav-items a{
+    position: relative;
+}
+
+.nav-items a::after{
+    content: "";
+    width: 0%;
+    height: 3px;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #faff05;
+    transition: width 0.3s ease-in-out;
+}
+.nav-items a:hover:after{
+    width: 60%;
+}
+
+#newsTxt{
+    position: relative;
+}
+#newsTxt::after{
+    content: "";
+    width: 75%;
+    height: 4px;
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #faff05;
+}

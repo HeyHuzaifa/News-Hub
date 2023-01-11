@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/assets/favicon.png" type="image/x-icon">
+  
+  <title>The News Hub</title>
+  <link rel="stylesheet" href="/assets/index-2c9b34c0.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav class="text-white bg-gray-900 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <a class="flex title-font text-xl font-medium items-center text-white mb-4 md:mb-0 cursor-pointer" id="Headlines">
+        <div class="bg-red-600 text-white h-8 w-14 flex justify-center">News</div>
+        <div class="text-white pl-1 hover:text-yellow-400">Hub</div>
+      </a>
+      <nav class="nav-items md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+        <a class="mr-5 cursor-pointer hover:text-yellow-400" id="Business">Business</a>
+        <a class="mr-5 cursor-pointer hover:text-yellow-400" id="Sports">Sports</a>
+        <a class="mr-5 cursor-pointer hover:text-yellow-400" id="Entertainment">Entertainment</a>
+        <a class="mr-5 cursor-pointer hover:text-yellow-400" id="Technology">Technology</a>
+      </nav>
+      <input type="text" class="text-black pl-2 rounded-lg" id="searchInput" placeholder="Search News">
+      <button class=" items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700
+         rounded text-base mt-4 md:mt-0 hover:text-yellow-400 ml-6" id="search">Search</button>
+    </div>
+  </nav>
+
+  <div class="hero-wrapper flex justify-center">
+    <div class="hero w-full h-[29rem]">
+      <img src="/assets/bg-8e3c0eda.png" alt="" id="hero" class="overflow-hidden bg-cover w-[86rem] h-[30rem]">
+    </div>
+  </div>
+
+  <section class="text-black body-font">
+    <div class="container px-5 py-16 mx-auto">
+      <div class="txt flex justify-center text-5xl mb-16">
+        <h1 id="newsTxt">Headlines</h1>
+      </div>
+
+      <div class="loading flex justify-center">
+        <img src="/assets/loading-82076465.gif" alt="" id="load" class="w-10">
+      </div>
+      <div class="flex flex-wrap -m-4" id="newsLocation">
+      </div>
+    </div>
+  </section>
+
+</body>
+<script src="script.js"></script>
+
+</html>
