@@ -30,3 +30,7 @@
     transform: translateX(-50%);
     background-color: #faff05;
 }
+
+.width{
+    width: 24vw;
+}
