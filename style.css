@@ -35,7 +35,7 @@
     width: 24vw;
 }
 
-@media (max-width: 350px){
+@media (max-width: 1023px){
     .width{
         width: 100%;
     }
