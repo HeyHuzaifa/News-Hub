@@ -49,34 +49,27 @@ search.addEventListener('click', () => {
 function displayNews(api, text) {
   document.getElementById("load").style.display = "block";
   document.getElementById('newsTxt').innerHTML = text;
-  const options = {
-   method: 'GET',
-   headers: {
-     'X-BingApis-SDK': 'true',
-     'X-RapidAPI-Key': 'c42bd16b3cmsh30dcb16d056fb4fp1eb86ajsn1bf545a568cb',
-     'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
-   }
- };
 
- fetch(`https://bing-news-search1.p.rapidapi.com/news/search?q=${api}&freshness=Day&textFormat=Raw&safeSearch=Off`, options)
+ fetch(`https://api.worldnewsapi.com/search-news?text=${api}&api-key=bf9d59dbdbe24e80bdf0faab9065e2d0`)
  .then((response) => {
    return response.json();
  }).then((data) => {
    document.getElementById("load").style.display = "none";
-   let articles = data.value;
-    let ihtml = ""
-    for (news in articles) {
+   let articles = data.news;
+   let ihtml = ""
+   for (news in articles) {
+      // console.log(articles[news]);
         try {
           ihtml += `
           <div class="p-4 lg:w-1/3 mobile:p-0">
           <div
             class="h-[90%] bg-gray-200 bg-opacity-40 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
-            <h2 class="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">${articles[news].name}</h2>
-            <img src="${articles[news].image.thumbnail.contentUrl}" alt="" class="width">
-            <p class="leading-relaxed mb-3">${articles[news].description}</p>
+            <h2 class="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">${articles[news].title}</h2>
+            <img src="${articles[news].image}" alt="" class="width">
+            <p class="leading-relaxed mb-3">Publish Date: ${articles[news].publish_date}</p>
+            <span> Author: ${articles[news].author} </span>
             <a href = "${articles[news].url}" class="text-indigo-400 flex justify-evenly">
               Details
-              <span>${articles[news].datePublished}</span>
             </a>
           </div>
         </div>
