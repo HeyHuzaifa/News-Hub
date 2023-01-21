@@ -50,7 +50,7 @@ function displayNews(api, text) {
   document.getElementById("load").style.display = "block";
   document.getElementById('newsTxt').innerHTML = text;
 
-  fetch(`https://api.worldnewsapi.com/search-news?text=${api}&api-key=bf9d59dbdbe24e80bdf0faab9065e2d0`)
+  fetch(`https://api.worldnewsapi.com/search-news?text=${api}&api-key=bf9d59dbdbe24e80bdf0faab9065e2d0&source-countries=pk`)
     .then((response) => {
       return response.json();
     }).then((data) => {
