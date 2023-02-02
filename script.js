@@ -50,13 +50,21 @@ function displayNews(api, text) {
   document.getElementById("load").style.display = "block";
   document.getElementById('newsTxt').innerHTML = text;
 
-  fetch(`https://api.worldnewsapi.com/search-news?text=${api}&api-key=bf9d59dbdbe24e80bdf0faab9065e2d0&source-countries=pk`)
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'c42bd16b3cmsh30dcb16d056fb4fp1eb86ajsn1bf545a568cb',
+      'X-RapidAPI-Host': 'real-time-news-data.p.rapidapi.com'
+    }
+  };
+  
+  fetch(`https://real-time-news-data.p.rapidapi.com/search?query=${api}&country=PK&lang=en`, options)
     .then((response) => {
       return response.json();
-    }).then((data) => {
-      console.log(data);
+    }).then((news) => {
       document.getElementById("load").style.display = "none";
-      let articles = data.news;
+      let articles = news.data;
+      // console.log(articles);
       let ihtml = ""
       for (news in articles) {
         // console.log(articles[news]);
@@ -66,14 +74,13 @@ function displayNews(api, text) {
           <div
             class="h-[90%] bg-gray-200 bg-opacity-40 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
             <h2 class="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">${articles[news].title}</h2>
-            <img src="${articles[news].image}" alt="" class="width">
-            <p class="leading-relaxed mb-3">Publish Date: ${articles[news].publish_date}</p>
-            <span> Author: ${articles[news].author} </span>
+            <img src="${articles[news].photo_url}" alt="Image not found" class="width">
+            <p class="leading-relaxed mb-3">Publish Date: ${articles[news].published_datetime_utc}</p>
             <button class="learn-more mt-1">
             <span class="circle" aria-hidden="true">
             <span class="icon arrow"></span>
             </span>
-            <span class="button-text"> <a href = "${articles[news].url}" class="text-white"> Learn More </a></span>
+            <span class="button-text"> <a href = "${articles[news].link}"> Learn More </a></span>
               </button>
           </div>
         </div>
@@ -86,9 +93,9 @@ function displayNews(api, text) {
       let newsLocation = document.getElementById('newsLocation');
       newsLocation.innerHTML = ihtml
     })
-  //  .catch(error => {
-  //    // Hide the loading icon
-  //    document.getElementById("load").style.display = "none";
-  //    console.log(error);
-  //  });
+   .catch(error => {
+     // Hide the loading icon
+     document.getElementById("load").style.display = "none";
+     console.log(error);
+   });
 }
